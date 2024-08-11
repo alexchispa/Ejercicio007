@@ -25,7 +25,7 @@ public class BookControllerTest {
         mockMvc.perform(post("/books")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"title\":\"\",\"author\":\"\"}"))
-            .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
