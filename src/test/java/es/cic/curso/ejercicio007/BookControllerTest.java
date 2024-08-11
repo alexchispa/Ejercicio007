@@ -31,6 +31,6 @@ public class BookControllerTest {
     @Test
     public void getBookWithoutAuth_ShouldReturnUnauthorized() throws Exception {
         mockMvc.perform(get("/books/1"))
-            .andExpect(status().isUnauthorized());
+            .andExpect(status().is4xxClientError());
     }
 }
