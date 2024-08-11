@@ -22,6 +22,10 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<Book> addBook(@RequestBody Book book) {
+        if (book.getTitle() == null || book.getTitle().isEmpty() ||
+            book.getAuthor() == null || book.getAuthor().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         Book newBook = BookService.addBook(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(newBook);
     }

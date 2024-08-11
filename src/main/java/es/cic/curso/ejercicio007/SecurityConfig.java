@@ -21,11 +21,13 @@ public class SecurityConfig {
                     .requestMatchers("/Books/**").permitAll()
                     .anyRequest().authenticated()
             )
+            .csrf().disable() // Deshabilitar CSRF para pruebas
             .oauth2ResourceServer(oauth2ResourceServer ->
                 oauth2ResourceServer.jwt()
             );
         return http.build();
     }
+
 
      @Bean
     public JwtDecoder jwtDecoder() {

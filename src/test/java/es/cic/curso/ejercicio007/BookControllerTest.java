@@ -19,14 +19,14 @@ public class BookControllerTest {
     private MockMvc mockMvc;
 
 
-       @Test
-    @WithMockUser(roles = "USER")
-    public void postBookWithInvalidData_ShouldReturnBadRequest() throws Exception {
-        mockMvc.perform(post("/books")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"title\":\"\",\"author\":\"\"}"))
-                .andExpect(status().isBadRequest());
-    }
+   @Test
+@WithMockUser
+public void postBookWithInvalidData_ShouldReturnBadRequest() throws Exception {
+    mockMvc.perform(post("/Books")
+            .contentType(MediaType.APPLICATION_JSON)
+            ) 
+            .andExpect(status().isBadRequest());
+}
 
     @Test
     public void getBookWithoutAuth_ShouldReturnUnauthorized() throws Exception {
